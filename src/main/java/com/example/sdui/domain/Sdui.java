@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "sdui")
 @NoArgsConstructor
 @Getter
-public class SDUI {
+public class Sdui {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,7 @@ public class SDUI {
 	@Column(nullable = true, columnDefinition = "LONGTEXT")
 	private String json;
 
-	public SDUI(final String json) {
+	public Sdui(final String json) {
 		this.json = json;
 	}
 }
