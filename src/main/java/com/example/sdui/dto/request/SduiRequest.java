@@ -13,6 +13,6 @@ import lombok.NoArgsConstructor;
 public class SduiRequest {
 
 	@NotBlank(message = RequestErrorCode.BLANK)
-	@JsonFormat
+	@JsonFormat(message = RequestErrorCode.INVALID_JSON_FORMAT)
 	private String json;
 }

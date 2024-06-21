@@ -15,7 +15,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "SDUI")
 public interface SduiControllerDocs {
 
-	@Operation(summary = "SDUI 생성")
+	@Operation(summary = "json 저장")
 	@ApiResponses(value = {
 		@ApiResponse(responseCode = "201", description = "json 저장 성공"),
 		@ApiResponse(responseCode = "400", description = "입력 형식이 잘못됨", content = @Content(
