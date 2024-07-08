@@ -3,7 +3,7 @@ spring:
     active: local
 
 springdoc:
-  packagesToScan: sdui
+  packagesToScan: com.example.sdui
   swagger-ui:
     path: /api-docs
     groups:
