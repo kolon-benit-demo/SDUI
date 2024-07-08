@@ -11,14 +11,14 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
-import com.example.sdui.dto.request.SduiRequest;
+import com.example.sdui.dto.request.PageLayoutRequest;
 import com.example.sdui.support.DatabaseCleanUp;
 
 import io.restassured.RestAssured;
 import io.restassured.response.ValidatableResponse;
 
 @SpringBootTest(properties = "spring.session.store-type=none", webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class SduiAcceptanceTest {
+public class PageLayoutAcceptanceTest {
 
 	@LocalServerPort
 	int port;
@@ -32,18 +32,18 @@ public class SduiAcceptanceTest {
 		databaseCleanUp.execute();
 	}
 
-	@DisplayName("사용자가 json을 저장하고 200 OK를 반환한다.")
+	@DisplayName("사용자가 PageLayout을 저장하고 200 OK를 반환한다.")
 	@Test
 	void create() {
 		// given
-		SduiRequest request = new SduiRequest("{\"key\":\"value\"}");
+		PageLayoutRequest request = new PageLayoutRequest("sample", "{\"key\":\"value\"}");
 
 		// when
 		ValidatableResponse response = RestAssured.given().log().all()
 			.body(request)
 			.contentType(MediaType.APPLICATION_JSON_VALUE)
 			.accept(MediaType.APPLICATION_JSON_VALUE)
-			.when().post("/sdui")
+			.when().post("/page-layouts")
 			.then().log().all();
 
 		// then

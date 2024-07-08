@@ -8,14 +8,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.example.sdui.dto.request.SduiRequest;
+import com.example.sdui.dto.request.PageLayoutRequest;
 import com.example.sdui.support.DatabaseCleanUp;
 
 @SpringBootTest
-public class SduiServiceTest {
+public class PageLayoutServiceTest {
 
 	@Autowired
-	private SduiService sduiService;
+	private PageLayoutService pageLayoutService;
 
 	@Autowired
 	private DatabaseCleanUp databaseCleanUp;
@@ -25,14 +25,14 @@ public class SduiServiceTest {
 		databaseCleanUp.execute();
 	}
 
-	@DisplayName("json를 저장한다.")
+	@DisplayName("PageLayout을 저장한다.")
 	@Test
-	void json_저장() {
+	void page_layout_저장() {
 		// given
-		SduiRequest request = new SduiRequest("{\"key\":\"value\"}");
+		PageLayoutRequest request = new PageLayoutRequest("sample", "{\"key\":\"value\"}");
 
 		// when
-		Long saveId = sduiService.save(request);
+		Long saveId = pageLayoutService.save(request);
 
 		// then
 		assertThat(saveId).isNotNull();
