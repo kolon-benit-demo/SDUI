@@ -3,7 +3,7 @@ package com.example.sdui.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.example.sdui.dto.request.SduiRequest;
+import com.example.sdui.dto.request.PageLayoutRequest;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -12,15 +12,15 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-@Tag(name = "SDUI")
-public interface SduiControllerDocs {
+@Tag(name = "PageLayout")
+public interface PageLayoutControllerDocs {
 
-	@Operation(summary = "json 저장")
+	@Operation(summary = "PageLayout 저장")
 	@ApiResponses(value = {
-		@ApiResponse(responseCode = "201", description = "json 저장 성공"),
+		@ApiResponse(responseCode = "201", description = "PageLayout 저장 성공"),
 		@ApiResponse(responseCode = "400", description = "입력 형식이 잘못됨", content = @Content(
 			examples = {
-				@ExampleObject(name = "json이 입력되지 않음", value = """
+				@ExampleObject(name = "입력값이 없음", value = """
 					{
 					    "success": false,
 					    "error": {
@@ -32,5 +32,5 @@ public interface SduiControllerDocs {
 					"""),
 			}))
 	})
-	ResponseEntity<Void> create(@RequestBody final SduiRequest request);
+	ResponseEntity<Void> create(@RequestBody final PageLayoutRequest request);
 }

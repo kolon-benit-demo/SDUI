@@ -10,9 +10,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class SduiRequest {
+public class PageLayoutRequest {
 
 	@NotBlank(message = RequestErrorCode.BLANK)
 	@JsonFormat
-	private String json;
+	private String name;
+
+	@NotBlank(message = RequestErrorCode.BLANK)
+	@JsonFormat
+	private String contents;
 }

@@ -10,19 +10,23 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "sdui")
+@Table(name = "page_layout")
 @NoArgsConstructor
 @Getter
-public class Sdui {
+public class PageLayout {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(nullable = true, columnDefinition = "LONGTEXT")
-	private String json;
+	@Column(nullable = false)
+	private String name;
 
-	public Sdui(final String json) {
-		this.json = json;
+	@Column(nullable = false, columnDefinition = "LONGTEXT")
+	private String contents;
+
+	public PageLayout(String name, String contents) {
+		this.name = name;
+		this.contents = contents;
 	}
 }
