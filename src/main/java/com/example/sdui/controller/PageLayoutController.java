@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.sdui.dto.request.PageLayoutRequest;
+import com.example.sdui.dto.request.PageLayoutUpdatingRequest;
 import com.example.sdui.dto.response.PageLayoutResponse;
 import com.example.sdui.service.PageLayoutService;
 
@@ -41,5 +43,14 @@ public class PageLayoutController implements PageLayoutControllerDocs {
 	public ResponseEntity<List<PageLayoutResponse>> findAll() {
 		List<PageLayoutResponse> responses = pageLayoutService.findAll();
 		return ResponseEntity.ok(responses);
+	}
+
+	@PatchMapping("/{id}")
+	public ResponseEntity<PageLayoutResponse> updateById(
+		@PathVariable Long id,
+		@RequestBody PageLayoutUpdatingRequest request
+	) {
+		PageLayoutResponse response = pageLayoutService.updateById(id, request);
+		return ResponseEntity.ok(response);
 	}
 }

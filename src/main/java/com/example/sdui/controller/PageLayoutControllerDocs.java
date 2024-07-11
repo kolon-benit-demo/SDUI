@@ -3,9 +3,11 @@ package com.example.sdui.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.sdui.dto.request.PageLayoutRequest;
+import com.example.sdui.dto.request.PageLayoutUpdatingRequest;
 import com.example.sdui.dto.response.PageLayoutResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -42,12 +44,12 @@ public interface PageLayoutControllerDocs {
 		@ApiResponse(responseCode = "200", description = "PageLayout 상세 조회 성공"),
 		@ApiResponse(responseCode = "400", description = "입력 형식이 잘못됨", content = @Content(
 			examples = {
-				@ExampleObject(name = "PageLayout이 존재하지 않음", value = """
+				@ExampleObject(name = "해당 id의 PageLayout이 존재하지 않음", value = """
 					{
 					    "success": false,
 					    "error": {
 					        "code": "PAGE_LAYOUT_001",
-					        "message": "PageLayout이 존재하지 않습니다."
+					        "message": "해당 id의 PageLayout이 존재하지 않습니다."
 					    },
 					    "data": null
 					}
@@ -61,4 +63,27 @@ public interface PageLayoutControllerDocs {
 		@ApiResponse(responseCode = "200", description = "PageLayout 전체 조회 성공")
 	})
 	ResponseEntity<List<PageLayoutResponse>> findAll();
+
+	@Operation(summary = "PageLayout 수정")
+	@ApiResponses(value = {
+		@ApiResponse(responseCode = "200", description = "PageLayout 수정 성공"),
+		@ApiResponse(responseCode = "400", description = "입력 형식이 잘못됨", content = @Content(
+			examples = {
+				@ExampleObject(name = "해당 id의 PageLayout이 존재하지 않음", value = """
+					{
+					    "success": false,
+					    "error": {
+					        "code": "PAGE_LAYOUT_001",
+					        "message": "해당 id의 PageLayout이 존재하지 않습니다."
+					    },
+					    "data": null
+					}
+					"""),
+			}))
+	})
+	ResponseEntity<PageLayoutResponse> updateById(
+		@PathVariable Long id,
+		@RequestBody PageLayoutUpdatingRequest request
+	);
+
 }

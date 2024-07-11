@@ -6,13 +6,17 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "page_layout")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
+@Builder
 public class PageLayout {
 
 	@Id
@@ -28,5 +32,15 @@ public class PageLayout {
 	public PageLayout(String name, String contents) {
 		this.name = name;
 		this.contents = contents;
+	}
+
+	public void update(PageLayout updatingPageLayoutInfo) {
+		if (updatingPageLayoutInfo.getName() != null) {
+			this.name = updatingPageLayoutInfo.getName();
+		}
+		
+		if (updatingPageLayoutInfo.getContents() != null) {
+			this.contents = updatingPageLayoutInfo.getContents();
+		}
 	}
 }

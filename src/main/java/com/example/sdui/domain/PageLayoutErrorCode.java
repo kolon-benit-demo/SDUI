@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 public enum PageLayoutErrorCode implements ErrorCode {
 
-	PAGE_LAYOUT_NOT_FOUND(400, "PAGE_LAYOUT_001", "해당 id의 페이지 레이아웃이 없습니다."),
+	PAGE_LAYOUT_NOT_FOUND(400, "PAGE_LAYOUT_001", "해당 id의 PageLayout이 없습니다."),
 	;
 
 	private final int statusCode;
