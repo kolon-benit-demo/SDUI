@@ -86,4 +86,9 @@ public interface PageLayoutControllerDocs {
 		@RequestBody PageLayoutUpdatingRequest request
 	);
 
+	@Operation(summary = "PageLayout 삭제")
+	@ApiResponses(value = {
+		@ApiResponse(responseCode = "204", description = "PageLayout 삭제 성공")
+	})
+	ResponseEntity<Void> deleteById(@PathVariable Long id);
 }
