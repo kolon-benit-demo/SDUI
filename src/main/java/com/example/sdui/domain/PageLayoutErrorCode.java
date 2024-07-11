@@ -1,0 +1,18 @@
+package com.example.sdui.domain;
+
+import com.example.sdui.exception.ErrorCode;
+
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Getter
+public enum PageLayoutErrorCode implements ErrorCode {
+
+	PAGE_LAYOUT_NOT_FOUND(400, "PAGE_LAYOUT_001", "해당 id의 페이지 레이아웃이 없습니다."),
+	;
+
+	private final int statusCode;
+	private final String errorCode;
+	private final String message;
+}
