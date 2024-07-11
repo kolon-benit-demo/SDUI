@@ -13,6 +13,7 @@ import org.springframework.http.MediaType;
 
 import com.example.sdui.domain.PageLayout;
 import com.example.sdui.dto.request.PageLayoutRequest;
+import com.example.sdui.dto.request.PageLayoutUpdatingRequest;
 import com.example.sdui.repository.PageLayoutRepository;
 import com.example.sdui.support.DatabaseCleanUp;
 
@@ -48,12 +49,7 @@ public class PageLayoutAcceptanceTest {
 		PageLayoutRequest request = new PageLayoutRequest("sample", "{\"key\":\"value\"}");
 
 		// when
-		ValidatableResponse response = RestAssured.given().log().all()
-			.body(request)
-			.contentType(MediaType.APPLICATION_JSON_VALUE)
-			.accept(MediaType.APPLICATION_JSON_VALUE)
-			.when().post("/page-layouts")
-			.then().log().all();
+		ValidatableResponse response = post("/page-layouts", request);
 
 		// then
 		response.statusCode(HttpStatus.CREATED.value())
@@ -89,6 +85,31 @@ public class PageLayoutAcceptanceTest {
 			.body("size()", equalTo(3));
 	}
 
+	@DisplayName("PageLayout을 수정하고 200 OK를 반환한다.")
+	@Test
+	void update() {
+		// given
+		PageLayoutUpdatingRequest pageLayoutUpdatingRequest = PageLayoutUpdatingRequest.builder()
+			.name("sample2")
+			.contents("{\"key2\":\"value2\"}")
+			.build();
+
+		// when
+		ValidatableResponse response = patch("/page-layouts/" + pageLayoutId, pageLayoutUpdatingRequest);
+
+		// then
+		response.statusCode(HttpStatus.OK.value())
+			.body("name", equalTo(pageLayoutUpdatingRequest.getName()))
+			.body("contents", equalTo(pageLayoutUpdatingRequest.getContents()));
+	}
+
+	private ValidatableResponse get(final String uri) {
+		return RestAssured.given().log().all()
+			.accept(MediaType.APPLICATION_JSON_VALUE)
+			.when().get(uri)
+			.then().log().all();
+	}
+
 	private ValidatableResponse post(final String uri, final Object requestBody) {
 		return RestAssured.given().log().all()
 			.body(requestBody)
@@ -98,10 +119,12 @@ public class PageLayoutAcceptanceTest {
 			.then().log().all();
 	}
 
-	private ValidatableResponse get(final String uri) {
+	private ValidatableResponse patch(final String uri, final Object requestBody) {
 		return RestAssured.given().log().all()
+			.body(requestBody)
+			.contentType(MediaType.APPLICATION_JSON_VALUE)
 			.accept(MediaType.APPLICATION_JSON_VALUE)
-			.when().get(uri)
+			.when().patch(uri)
 			.then().log().all();
 	}
 }

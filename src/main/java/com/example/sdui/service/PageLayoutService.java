@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.sdui.domain.PageLayout;
 import com.example.sdui.domain.PageLayoutErrorCode;
 import com.example.sdui.dto.request.PageLayoutRequest;
+import com.example.sdui.dto.request.PageLayoutUpdatingRequest;
 import com.example.sdui.dto.response.PageLayoutResponse;
 import com.example.sdui.exception.SduiException;
 import com.example.sdui.repository.PageLayoutRepository;
@@ -40,5 +41,16 @@ public class PageLayoutService {
 		return pageLayouts.stream()
 			.map(PageLayoutResponse::from)
 			.collect(Collectors.toList());
+	}
+
+	@Transactional
+	public PageLayoutResponse updateById(final Long id, final PageLayoutUpdatingRequest request) {
+		PageLayout pageLayout = pageLayoutRepository.findById(id)
+			.orElseThrow(() -> new SduiException(PageLayoutErrorCode.PAGE_LAYOUT_NOT_FOUND));
+
+		PageLayout updatingPageLayoutInfo = request.toDomain();
+		pageLayout.update(updatingPageLayoutInfo);
+
+		return PageLayoutResponse.from(pageLayout);
 	}
 }

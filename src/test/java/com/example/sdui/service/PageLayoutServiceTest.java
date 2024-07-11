@@ -1,6 +1,7 @@
 package com.example.sdui.service;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -10,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.example.sdui.domain.PageLayout;
 import com.example.sdui.dto.request.PageLayoutRequest;
+import com.example.sdui.dto.request.PageLayoutUpdatingRequest;
 import com.example.sdui.dto.response.PageLayoutResponse;
 import com.example.sdui.exception.SduiException;
 import com.example.sdui.repository.PageLayoutRepository;
@@ -51,7 +53,7 @@ public class PageLayoutServiceTest {
 
 	@DisplayName("PageLayout 아이디로 조회한다.")
 	@Test
-	void page_layout_조회_성공() {
+	void page_layout_상세_조회_성공() {
 		// given & when
 		PageLayoutResponse pageLayoutResponse = pageLayoutService.findById(pageLayoutId);
 
@@ -61,7 +63,7 @@ public class PageLayoutServiceTest {
 
 	@DisplayName("없는 PageLayout 아이디로 조회하면 예외가 발생한다.")
 	@Test
-	void page_layout_조회_실패() {
+	void page_layout_상세_조회_실패() {
 		// given & when
 		Long notExistPageLyaoutId = pageLayoutId + 1L;
 
@@ -79,5 +81,24 @@ public class PageLayoutServiceTest {
 
 		// then
 		assertThat(pageLayoutService.findAll()).hasSize(3);
+	}
+
+	@DisplayName("PageLayout을 수정한다.")
+	@Test
+	void page_layout_수정() {
+		// given
+		PageLayoutUpdatingRequest pageLayoutUpdatingRequest = PageLayoutUpdatingRequest.builder()
+			.name("sample2")
+			.contents("{\"key2\":\"value2\"}")
+			.build();
+
+		// when
+		PageLayoutResponse updatedPageLayout = pageLayoutService.updateById(pageLayoutId, pageLayoutUpdatingRequest);
+
+		// then
+		assertAll(
+			() -> assertThat(updatedPageLayout.getName()).isEqualTo(pageLayoutUpdatingRequest.getName()),
+			() -> assertThat(updatedPageLayout.getContents()).isEqualTo(pageLayoutUpdatingRequest.getContents())
+		);
 	}
 }
