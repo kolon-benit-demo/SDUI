@@ -87,7 +87,7 @@ public class PageLayoutAcceptanceTest {
 
 	@DisplayName("PageLayout을 수정하고 200 OK를 반환한다.")
 	@Test
-	void update() {
+	void updateById() {
 		// given
 		PageLayoutUpdatingRequest pageLayoutUpdatingRequest = PageLayoutUpdatingRequest.builder()
 			.name("sample2")
@@ -101,6 +101,19 @@ public class PageLayoutAcceptanceTest {
 		response.statusCode(HttpStatus.OK.value())
 			.body("name", equalTo(pageLayoutUpdatingRequest.getName()))
 			.body("contents", equalTo(pageLayoutUpdatingRequest.getContents()));
+	}
+
+	@DisplayName("PageLayout을 삭제하고 204 No Content를 반환한다.")
+	@Test
+	void deleteById() {
+		// given
+		int id = pageLayoutId.intValue();
+
+		// when
+		ValidatableResponse response = delete("/page-layouts/" + id);
+
+		// then
+		response.statusCode(HttpStatus.NO_CONTENT.value());
 	}
 
 	private ValidatableResponse get(final String uri) {
@@ -125,6 +138,13 @@ public class PageLayoutAcceptanceTest {
 			.contentType(MediaType.APPLICATION_JSON_VALUE)
 			.accept(MediaType.APPLICATION_JSON_VALUE)
 			.when().patch(uri)
+			.then().log().all();
+	}
+
+	private ValidatableResponse delete(final String uri) {
+		return RestAssured.given().log().all()
+			.accept(MediaType.APPLICATION_JSON_VALUE)
+			.when().delete(uri)
 			.then().log().all();
 	}
 }

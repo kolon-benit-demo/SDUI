@@ -53,4 +53,9 @@ public class PageLayoutService {
 
 		return PageLayoutResponse.from(pageLayout);
 	}
+
+	@Transactional
+	public void deleteById(final Long id) {
+		pageLayoutRepository.deleteById(id);
+	}
 }

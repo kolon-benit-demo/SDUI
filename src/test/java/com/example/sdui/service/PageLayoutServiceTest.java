@@ -101,4 +101,14 @@ public class PageLayoutServiceTest {
 			() -> assertThat(updatedPageLayout.getContents()).isEqualTo(pageLayoutUpdatingRequest.getContents())
 		);
 	}
+
+	@DisplayName("PageLayout을 삭제한다.")
+	@Test
+	void page_layout_삭제() {
+		// given & when
+		pageLayoutService.deleteById(pageLayoutId);
+
+		// then
+		assertThat(pageLayoutRepository.findById(pageLayoutId)).isEmpty();
+	}
 }
