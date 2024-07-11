@@ -1,14 +1,18 @@
 package com.example.sdui.controller;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.sdui.dto.request.PageLayoutRequest;
+import com.example.sdui.dto.response.PageLayoutResponse;
 import com.example.sdui.service.PageLayoutService;
 
 import jakarta.validation.Valid;
@@ -25,5 +29,17 @@ public class PageLayoutController implements PageLayoutControllerDocs {
 	public ResponseEntity<Void> create(@RequestBody @Valid final PageLayoutRequest request) {
 		Long id = pageLayoutService.save(request);
 		return ResponseEntity.created(URI.create("/page-layouts/" + id)).build();
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<PageLayoutResponse> findById(@PathVariable Long id) {
+		PageLayoutResponse response = pageLayoutService.findById(id);
+		return ResponseEntity.ok(response);
+	}
+
+	@GetMapping
+	public ResponseEntity<List<PageLayoutResponse>> findAll() {
+		List<PageLayoutResponse> responses = pageLayoutService.findAll();
+		return ResponseEntity.ok(responses);
 	}
 }
