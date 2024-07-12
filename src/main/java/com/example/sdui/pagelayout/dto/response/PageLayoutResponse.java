@@ -1,6 +1,6 @@
-package com.example.sdui.dto.response;
+package com.example.sdui.pagelayout.dto.response;
 
-import com.example.sdui.domain.PageLayout;
+import com.example.sdui.pagelayout.domain.PageLayout;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 

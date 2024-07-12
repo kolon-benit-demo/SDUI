@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.sdui.common.dto.response.SduiResponse;
 import com.example.sdui.divkit.Sample;
-import com.example.sdui.dto.response.SduiResponse;
 
 import divkit.dsl.Divan;
 

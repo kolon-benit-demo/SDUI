@@ -1,4 +1,4 @@
-package com.example.sdui.exception;
+package com.example.sdui.common.exception;
 
 public interface ErrorCode {
 

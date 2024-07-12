@@ -1,4 +1,4 @@
-package com.example.sdui.domain;
+package com.example.sdui.pagelayout.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,7 +38,7 @@ public class PageLayout {
 		if (updatingPageLayoutInfo.getName() != null) {
 			this.name = updatingPageLayoutInfo.getName();
 		}
-		
+
 		if (updatingPageLayoutInfo.getContents() != null) {
 			this.contents = updatingPageLayoutInfo.getContents();
 		}
