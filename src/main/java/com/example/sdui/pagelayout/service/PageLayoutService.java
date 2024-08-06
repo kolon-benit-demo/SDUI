@@ -8,10 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.sdui.common.exception.SduiException;
 import com.example.sdui.pagelayout.domain.PageLayout;
-import com.example.sdui.pagelayout.domain.PageLayoutErrorCode;
 import com.example.sdui.pagelayout.dto.request.PageLayoutRequest;
 import com.example.sdui.pagelayout.dto.request.PageLayoutUpdatingRequest;
 import com.example.sdui.pagelayout.dto.response.PageLayoutResponse;
+import com.example.sdui.pagelayout.exception.PageLayoutErrorCode;
 import com.example.sdui.pagelayout.repository.PageLayoutRepository;
 
 import lombok.RequiredArgsConstructor;

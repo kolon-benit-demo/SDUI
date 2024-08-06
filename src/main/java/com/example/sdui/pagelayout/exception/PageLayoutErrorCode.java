@@ -1,4 +1,4 @@
-package com.example.sdui.pagelayout.domain;
+package com.example.sdui.pagelayout.exception;
 
 import com.example.sdui.common.exception.ErrorCode;
 
