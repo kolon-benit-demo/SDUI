@@ -1,6 +1,9 @@
+server:
+  port: 8200
+
 spring:
   profiles:
-    active: local
+    active: dev
 
 springdoc:
   packagesToScan: com.example.sdui
