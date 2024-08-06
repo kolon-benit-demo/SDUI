@@ -1,4 +1,4 @@
-package com.example.sdui.controller;
+package com.example.sdui.pagelayout.controller;
 
 import java.util.List;
 
@@ -6,9 +6,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.example.sdui.dto.request.PageLayoutRequest;
-import com.example.sdui.dto.request.PageLayoutUpdatingRequest;
-import com.example.sdui.dto.response.PageLayoutResponse;
+import com.example.sdui.common.dto.response.SduiResponse;
+import com.example.sdui.pagelayout.dto.request.PageLayoutRequest;
+import com.example.sdui.pagelayout.dto.request.PageLayoutUpdatingRequest;
+import com.example.sdui.pagelayout.dto.response.PageLayoutResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -56,13 +57,13 @@ public interface PageLayoutControllerDocs {
 					"""),
 			}))
 	})
-	ResponseEntity<PageLayoutResponse> findById(Long id);
+	ResponseEntity<SduiResponse<PageLayoutResponse>> findById(Long id);
 
 	@Operation(summary = "PageLayout 전체 조회")
 	@ApiResponses(value = {
 		@ApiResponse(responseCode = "200", description = "PageLayout 전체 조회 성공")
 	})
-	ResponseEntity<List<PageLayoutResponse>> findAll();
+	ResponseEntity<SduiResponse<List<PageLayoutResponse>>> findAll();
 
 	@Operation(summary = "PageLayout 수정")
 	@ApiResponses(value = {
@@ -81,7 +82,7 @@ public interface PageLayoutControllerDocs {
 					"""),
 			}))
 	})
-	ResponseEntity<PageLayoutResponse> updateById(
+	ResponseEntity<SduiResponse<PageLayoutResponse>> updateById(
 		@PathVariable Long id,
 		@RequestBody PageLayoutUpdatingRequest request
 	);

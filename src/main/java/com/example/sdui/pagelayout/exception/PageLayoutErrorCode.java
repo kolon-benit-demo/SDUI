@@ -1,6 +1,6 @@
-package com.example.sdui.domain;
+package com.example.sdui.pagelayout.exception;
 
-import com.example.sdui.exception.ErrorCode;
+import com.example.sdui.common.exception.ErrorCode;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

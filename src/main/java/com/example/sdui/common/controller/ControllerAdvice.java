@@ -1,4 +1,4 @@
-package com.example.sdui.controller;
+package com.example.sdui.common.controller;
 
 import java.util.List;
 import java.util.Objects;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.example.sdui.dto.request.RequestErrorCode;
-import com.example.sdui.dto.response.SduiResponse;
-import com.example.sdui.exception.SduiException;
+import com.example.sdui.common.dto.request.RequestErrorCode;
+import com.example.sdui.common.dto.response.SduiResponse;
+import com.example.sdui.common.exception.SduiException;
 
 @RestControllerAdvice
 public class ControllerAdvice {

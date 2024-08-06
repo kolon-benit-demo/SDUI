@@ -11,10 +11,10 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
-import com.example.sdui.domain.PageLayout;
-import com.example.sdui.dto.request.PageLayoutRequest;
-import com.example.sdui.dto.request.PageLayoutUpdatingRequest;
-import com.example.sdui.repository.PageLayoutRepository;
+import com.example.sdui.pagelayout.domain.PageLayout;
+import com.example.sdui.pagelayout.dto.request.PageLayoutRequest;
+import com.example.sdui.pagelayout.dto.request.PageLayoutUpdatingRequest;
+import com.example.sdui.pagelayout.repository.PageLayoutRepository;
 import com.example.sdui.support.DatabaseCleanUp;
 
 import io.restassured.RestAssured;
@@ -67,7 +67,8 @@ public class PageLayoutAcceptanceTest {
 
 		// then
 		response.statusCode(HttpStatus.OK.value())
-			.body("id", equalTo(id));
+			.body("success", equalTo(true))
+			.body("data.id", equalTo(id));
 	}
 
 	@DisplayName("모든 PageLayout을 조회하고 200 OK를 반환한다.")
@@ -99,8 +100,9 @@ public class PageLayoutAcceptanceTest {
 
 		// then
 		response.statusCode(HttpStatus.OK.value())
-			.body("name", equalTo(pageLayoutUpdatingRequest.getName()))
-			.body("contents", equalTo(pageLayoutUpdatingRequest.getContents()));
+			.body("success", equalTo(true))
+			.body("data.name", equalTo(pageLayoutUpdatingRequest.getName()))
+			.body("data.contents", equalTo(pageLayoutUpdatingRequest.getContents()));
 	}
 
 	@DisplayName("PageLayout을 삭제하고 204 No Content를 반환한다.")

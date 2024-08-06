@@ -1,4 +1,4 @@
-package com.example.sdui.controller;
+package com.example.sdui.pagelayout.controller;
 
 import java.net.URI;
 import java.util.List;
@@ -13,10 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.sdui.dto.request.PageLayoutRequest;
-import com.example.sdui.dto.request.PageLayoutUpdatingRequest;
-import com.example.sdui.dto.response.PageLayoutResponse;
-import com.example.sdui.service.PageLayoutService;
+import com.example.sdui.common.dto.response.SduiResponse;
+import com.example.sdui.pagelayout.dto.request.PageLayoutRequest;
+import com.example.sdui.pagelayout.dto.request.PageLayoutUpdatingRequest;
+import com.example.sdui.pagelayout.dto.response.PageLayoutResponse;
+import com.example.sdui.pagelayout.service.PageLayoutService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -35,24 +36,24 @@ public class PageLayoutController implements PageLayoutControllerDocs {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<PageLayoutResponse> findById(@PathVariable Long id) {
+	public ResponseEntity<SduiResponse<PageLayoutResponse>> findById(@PathVariable Long id) {
 		PageLayoutResponse response = pageLayoutService.findById(id);
-		return ResponseEntity.ok(response);
+		return ResponseEntity.ok(SduiResponse.success(response));
 	}
 
 	@GetMapping
-	public ResponseEntity<List<PageLayoutResponse>> findAll() {
+	public ResponseEntity<SduiResponse<List<PageLayoutResponse>>> findAll() {
 		List<PageLayoutResponse> responses = pageLayoutService.findAll();
-		return ResponseEntity.ok(responses);
+		return ResponseEntity.ok(SduiResponse.success(responses));
 	}
 
 	@PatchMapping("/{id}")
-	public ResponseEntity<PageLayoutResponse> updateById(
+	public ResponseEntity<SduiResponse<PageLayoutResponse>> updateById(
 		@PathVariable Long id,
 		@RequestBody PageLayoutUpdatingRequest request
 	) {
 		PageLayoutResponse response = pageLayoutService.updateById(id, request);
-		return ResponseEntity.ok(response);
+		return ResponseEntity.ok(SduiResponse.success(response));
 	}
 
 	@DeleteMapping("/{id}")

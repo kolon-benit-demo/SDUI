@@ -1,4 +1,4 @@
-package com.example.sdui.exception;
+package com.example.sdui.common.exception;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

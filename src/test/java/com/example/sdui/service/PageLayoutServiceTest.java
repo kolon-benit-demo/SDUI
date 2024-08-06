@@ -9,12 +9,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.example.sdui.domain.PageLayout;
-import com.example.sdui.dto.request.PageLayoutRequest;
-import com.example.sdui.dto.request.PageLayoutUpdatingRequest;
-import com.example.sdui.dto.response.PageLayoutResponse;
-import com.example.sdui.exception.SduiException;
-import com.example.sdui.repository.PageLayoutRepository;
+import com.example.sdui.common.exception.SduiException;
+import com.example.sdui.pagelayout.domain.PageLayout;
+import com.example.sdui.pagelayout.dto.request.PageLayoutRequest;
+import com.example.sdui.pagelayout.dto.request.PageLayoutUpdatingRequest;
+import com.example.sdui.pagelayout.dto.response.PageLayoutResponse;
+import com.example.sdui.pagelayout.repository.PageLayoutRepository;
+import com.example.sdui.pagelayout.service.PageLayoutService;
 import com.example.sdui.support.DatabaseCleanUp;
 
 @SpringBootTest

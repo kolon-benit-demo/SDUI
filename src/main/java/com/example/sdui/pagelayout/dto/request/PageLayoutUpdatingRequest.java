@@ -1,6 +1,7 @@
-package com.example.sdui.dto.request;
+package com.example.sdui.pagelayout.dto.request;
 
-import com.example.sdui.domain.PageLayout;
+import com.example.sdui.pagelayout.domain.PageLayout;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
@@ -13,6 +14,7 @@ import lombok.Getter;
 public class PageLayoutUpdatingRequest {
 
 	private String name;
+	@JsonFormat
 	private String contents;
 
 	public PageLayout toDomain() {

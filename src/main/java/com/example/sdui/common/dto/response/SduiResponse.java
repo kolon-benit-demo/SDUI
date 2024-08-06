@@ -1,4 +1,4 @@
-package com.example.sdui.dto.response;
+package com.example.sdui.common.dto.response;
 
 import lombok.AccessLevel;
 import lombok.Getter;

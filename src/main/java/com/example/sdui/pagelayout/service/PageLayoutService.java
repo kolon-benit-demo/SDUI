@@ -1,4 +1,4 @@
-package com.example.sdui.service;
+package com.example.sdui.pagelayout.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -6,13 +6,13 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.sdui.domain.PageLayout;
-import com.example.sdui.domain.PageLayoutErrorCode;
-import com.example.sdui.dto.request.PageLayoutRequest;
-import com.example.sdui.dto.request.PageLayoutUpdatingRequest;
-import com.example.sdui.dto.response.PageLayoutResponse;
-import com.example.sdui.exception.SduiException;
-import com.example.sdui.repository.PageLayoutRepository;
+import com.example.sdui.common.exception.SduiException;
+import com.example.sdui.pagelayout.domain.PageLayout;
+import com.example.sdui.pagelayout.dto.request.PageLayoutRequest;
+import com.example.sdui.pagelayout.dto.request.PageLayoutUpdatingRequest;
+import com.example.sdui.pagelayout.dto.response.PageLayoutResponse;
+import com.example.sdui.pagelayout.exception.PageLayoutErrorCode;
+import com.example.sdui.pagelayout.repository.PageLayoutRepository;
 
 import lombok.RequiredArgsConstructor;
 

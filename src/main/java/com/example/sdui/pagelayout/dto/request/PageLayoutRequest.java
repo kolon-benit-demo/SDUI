@@ -1,5 +1,6 @@
-package com.example.sdui.dto.request;
+package com.example.sdui.pagelayout.dto.request;
 
+import com.example.sdui.common.dto.request.RequestErrorCode;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.validation.constraints.NotBlank;
@@ -13,7 +14,6 @@ import lombok.NoArgsConstructor;
 public class PageLayoutRequest {
 
 	@NotBlank(message = RequestErrorCode.BLANK)
-	@JsonFormat
 	private String name;
 
 	@NotBlank(message = RequestErrorCode.BLANK)
