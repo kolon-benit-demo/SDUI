@@ -19,7 +19,7 @@ import com.example.sdui.divkit.sample.Sample;
 
 @RestController
 @RequestMapping("/divkits")
-public class DivkitController {
+public class DivkitController implements DivkitControllerDocs {
 
 	private final Map<Integer, Sample> sampleMap;
 
