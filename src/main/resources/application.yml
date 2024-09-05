@@ -1,5 +1,15 @@
 server:
+  servlet:
+    context-path: /sdui
   port: 8200
+
+# AJP
+tomcat:
+  ajp:
+    protocol: AJP/1.3
+    port: 8201
+    enable: true
+    scheme: http
 
 spring:
   profiles:

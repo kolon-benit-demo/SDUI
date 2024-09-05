@@ -3,9 +3,12 @@ spring:
     console:
       enabled: true
   datasource:
-    url: ${DB_URL}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    #    url: ${DB_URL}
+    #    username: ${DB_USERNAME}
+    #    password: ${DB_PASSWORD}
+    url: jdbc:mysql://172.30.158.134:33306/sdui?createDatabaseIfNotExist=true&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: sdui
+    password: DEVsduiapp@12!
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     database-platform: org.hibernate.dialect.MariaDBDialect
