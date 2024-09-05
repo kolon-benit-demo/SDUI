@@ -49,7 +49,7 @@ public class PageLayoutAcceptanceTest {
 		PageLayoutRequest request = new PageLayoutRequest("sample", "{\"key\":\"value\"}");
 
 		// when
-		ValidatableResponse response = post("/page-layouts", request);
+		ValidatableResponse response = post("/sdui/page-layouts", request);
 
 		// then
 		response.statusCode(HttpStatus.CREATED.value())
@@ -63,7 +63,7 @@ public class PageLayoutAcceptanceTest {
 		int id = pageLayoutId.intValue();
 
 		// when
-		ValidatableResponse response = get("/page-layouts/" + id);
+		ValidatableResponse response = get("/sdui/page-layouts/" + id);
 
 		// then
 		response.statusCode(HttpStatus.OK.value())
@@ -79,7 +79,7 @@ public class PageLayoutAcceptanceTest {
 		pageLayoutRepository.save(new PageLayout("sample3", "{\"key\":\"value\"}"));
 
 		// when
-		ValidatableResponse response = get("/page-layouts");
+		ValidatableResponse response = get("/sdui/page-layouts");
 
 		// then
 		response.statusCode(HttpStatus.OK.value())
@@ -96,7 +96,7 @@ public class PageLayoutAcceptanceTest {
 			.build();
 
 		// when
-		ValidatableResponse response = patch("/page-layouts/" + pageLayoutId, pageLayoutUpdatingRequest);
+		ValidatableResponse response = patch("/sdui/page-layouts/" + pageLayoutId, pageLayoutUpdatingRequest);
 
 		// then
 		response.statusCode(HttpStatus.OK.value())
@@ -112,7 +112,7 @@ public class PageLayoutAcceptanceTest {
 		int id = pageLayoutId.intValue();
 
 		// when
-		ValidatableResponse response = delete("/page-layouts/" + id);
+		ValidatableResponse response = delete("/sdui/page-layouts/" + id);
 
 		// then
 		response.statusCode(HttpStatus.NO_CONTENT.value());
